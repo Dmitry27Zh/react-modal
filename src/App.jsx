@@ -1,6 +1,20 @@
 import { useState } from 'react'
 import './App.css'
 
+function Modal({ isOpen, handleClose, children }) {
+  return (
+    <div className={`overlay animated ${isOpen ? 'show' : ''}`}>
+      <div className="modal">
+        <svg height="200" viewBox="0 0 200 200" width="200" onClick={handleClose}>
+          <title />
+          <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
+        </svg>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => {
@@ -15,15 +29,10 @@ function App() {
       <button className="open-modal-btn" onClick={handleOpen}>
         ✨ Открыть окно
       </button>
-      <div className={`overlay animated ${isOpen ? 'show' : ''}`}>
-        <div className="modal">
-          <svg height="200" viewBox="0 0 200 200" width="200" onClick={handleClose}>
-            <title />
-            <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
-          </svg>
-          <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="gif" />
-        </div>
-      </div>
+      <Modal isOpen={isOpen} handleClose={handleClose}>
+        <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="gif" />
+        <h3>Modal</h3>
+      </Modal>
     </div>
   )
 }
