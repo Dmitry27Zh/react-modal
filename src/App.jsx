@@ -3,10 +3,15 @@ import './App.css'
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => {
+    setIsOpen(true)
+  }
 
   return (
     <div className="App">
-      <button className="open-modal-btn">✨ Открыть окно</button>
+      <button className="open-modal-btn" onClick={handleOpen}>
+        ✨ Открыть окно
+      </button>
       {isOpen && (
         <div className="overlay">
           <div className="modal">
